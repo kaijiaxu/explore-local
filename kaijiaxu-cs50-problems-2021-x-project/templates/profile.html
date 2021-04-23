@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+
+    {% for activity in activities %}
+    <div class="search-results">
+            <h5><a href="{{ url_for('edit', title=activity.title) }}">{{ activity.title }}</a></h5>
+            <p class="text-secondary" class="fs-6">Rating: {{ activity.rating }}</p>
+            <p class="text-secondary" class="fs-6">Estimated cost: ~${{ activity.cost }}</p>
+            <p class="text-secondary" class="fs-6">Tags: {{ activity.tag }}</p>
+            <p class="text-secondary" class="fs-6">Date updated: {{ activity.edit_date }}</p>
+            <p class="text-secondary" class="fs-6">{{ activity.description }}</p>
+    </div>
+    {% endfor %}
+
+{% endblock %}
