@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit your activity!
+{% endblock %}
+
+{% block main %}
+
+    <form action="/edit" method="POST">
+        <div class="form-group">
+            <label for="title">Title of activity: </label>
+            <input required autocomplete="off" autofocus class="form-control" name="title" value="{{ title }}" type="text">
+        </div>
+        <div class="form-group">
+            <label for="description">Description of activity (include as many details as possible, such as when you participated (weekday/weekend), cost entailed, as well as your review of the activity, etc.) </label><br>
+            <textarea required name="description" rows="10" cols="100">{{ description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="rating">Rating (out of 5, up to 1 decimal place): </label>
+            <input autocomplete="off" class="form-control" name="rating" min="1" max="5" step="0.1" type="number" value="{{ rating }}">
+        </div>
+        <div class="form-group">
+            <label for="cost">Estimated cost: ($)</label>
+            <input required autocomplete="off" class="form-control" name="cost" min="0" step="0.01" type="number" value="{{ cost }}">
+        </div>
+        <div class="form-group" id="tags">
+            <label for="tag">Tag(s) to add: </label>
+            {% for tag in tags %}
+                <input type="radio" name="tag" value="{{ tag }}">{{ tag }}</input>
+            {% endfor %}
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Edit</button>
+
+
+
+{% endblock %}
